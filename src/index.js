@@ -6,7 +6,6 @@ import {
     Picker,
     Platform,
     Text,
-    TextInput,
     TouchableOpacity,
     TouchableWithoutFeedback,
     View,
@@ -388,14 +387,16 @@ export default class RNPickerSelect extends PureComponent {
         return (
             <View pointerEvents="box-only" style={containerStyle}>
                 <Text
+                    numberOfLines={1}
                     style={[
                         Platform.OS === 'ios' ? style.inputIOS : style.inputAndroid,
                         this.getPlaceholderStyle(),
                     ]}
-                    value={this.state.selectedItem.label}
                     ref={this.setInputRef}
                     {...textInputProps}
-                />
+                >
+                    {this.state.selectedItem.label}
+                </Text>
                 {this.renderIcon()}
             </View>
         );
